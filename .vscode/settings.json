@@ -1,0 +1,6 @@
+{
+  // 自動フォーマット設定
+  "editor.formatOnSave": false, // 保存時にフォーマット
+  "editor.formatOnType": false, // 入力中（改行時）にフォーマット
+  "editor.formatOnPaste": false // ペースト時にフォーマット
+}
