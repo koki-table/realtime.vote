@@ -17,11 +17,11 @@ const FirestoreInit = () => {
     const firestoreData = collection(firebaseApp.firestore, 'users');
 
     // firestoreのドキュメントに登録
-    const init = async () => {
+    const firestoreInit = async () => {
         await setDoc(doc(firestoreData, currentUser), {
             leftCount: buttonLeftCount,
             rightCount: buttonRightCount,
-            name: '',
+            name: '名無しさん',
             userId: `${currentUser}`,
         });
     };
@@ -30,14 +30,9 @@ const FirestoreInit = () => {
         const initButtonState = async () => {
             onSnapshot(doc(firestoreData, currentUser), (doc) => {
 
-                // console.log(doc.data());
-
                 // firestoreに登録がない場合
                 if(typeof doc.data() === 'undefined') {
-
-                    // 新規で登録
-                    init()
-                
+                    firestoreInit()
                 // firestoreに登録がある場合
                 } else {
                     setButtonLeftCount(doc.data().leftCount)
@@ -52,13 +47,13 @@ const FirestoreInit = () => {
     }, [currentUser])
 
     useEffect(() => {
-        init()
+        firestoreInit()
 
         // buttonRightCountが更新されたタイミングでuseeffectが実行
     }, [buttonRightCount])
 
     useEffect(() => {
-        init()
+        firestoreInit()
 
         // buttonLeftCountが更新されたタイミングでuseeffectが実行
     }, [buttonLeftCount])

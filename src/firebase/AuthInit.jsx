@@ -27,7 +27,6 @@ const AuthInit = () => {
                                 user.uid,
                                 // isAnonymus: e.user.isAnonymous,
                             )
-
                             console.log("初回ログイン");
                         }
                         // eslint-disable-next-line no-console
@@ -42,7 +41,6 @@ const AuthInit = () => {
                         user.uid,
                         // isAnonymus: user.isAnonymous,
                     )
-                    console.log("2解");
                 }
             })
         } catch {

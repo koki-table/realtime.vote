@@ -25,10 +25,10 @@ const RightButton = () => {
 
     return (
         <div className="vote-area vote-area--right">
-            <span className="count"><span className="count-num">{buttonRightCount}</span>票</span>
             <button className="btn btn--right" onClick={handleClick}>
                 <span className="btn-text-main">ディグニクス</span><br/>に投票する
             </button>
+            <span className="count"><span className="count-num">{buttonRightCount}</span>票</span>
         </div>
     );
 };

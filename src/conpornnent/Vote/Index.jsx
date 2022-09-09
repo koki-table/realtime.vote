@@ -1,6 +1,9 @@
 import React from "react";
 import LeftButton from './LeftButton'
 import RightButton from './RightButton'
+import TotalCount from './TotalCount'
+import RegisterName from './RegisterName'
+import BothCount from './BothCount'
 import Chart from './Chart'
 import AuthInit from '../../firebase/AuthInit'
 import FirestoreInit from '../../firebase/FirestoreInit'
@@ -17,7 +20,12 @@ const Index = () => {
         <div className="container">
             <FirestoreInit/>
             <AuthInit/>
+            <TotalCount/>
             <Chart/>
+            <div className="both-count">
+                <BothCount/>
+            </div>
+            <RegisterName/>
             <div className="vote">
                 <LeftButton/>
                 <RightButton/>

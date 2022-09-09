@@ -2,6 +2,7 @@ import React from "react";
 import { useRecoilState } from "recoil"
 import { buttonLeftCountAtom } from "../../state/buttonLeftCount"
 import { buttonRightCountAtom } from "../../state/buttonRightCount"
+import { buttonTotalCountAtom } from "../../state/buttonTotalCount"
 
 // import { deleteDoc, doc, updateDoc, collection } from "firebase/firestore";
 // import { firebaseApp } from "../../firebase/firebase.config";
