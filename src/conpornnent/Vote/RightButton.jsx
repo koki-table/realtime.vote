@@ -1,22 +1,35 @@
 import React from "react";
 import { useRecoilState } from "recoil"
 import { buttonRightCountAtom } from "../../state/buttonRightCount"
-
-// import { deleteDoc, doc, updateDoc, collection } from "firebase/firestore";
-// import { firebaseApp } from "../../firebase/firebase.config";
+import { currentUserAtom } from "../../state/currentUser"
+import { doc, updateDoc, collection } from "firebase/firestore";
+import { firebaseApp } from "../../firebase/firebase.config";
 
 const RightButton = () => {
 
+    // database(firestoreの参照)
+    const firestoreData = collection(firebaseApp.firestore, 'users');
+
+    const [currentUser, setCurrentUser] = useRecoilState(currentUserAtom);
+
     // ButtonState
     const [buttonRightCount, setButtonRightCount] = useRecoilState(buttonRightCountAtom);
-    const handleClick = () => {
+    const handleClick = async() => {
         setButtonRightCount(buttonRightCount + 1);
+
+        // firestoreのcountを更新
+        await updateDoc(doc(firestoreData, currentUser), {
+            rightCount: buttonRightCount + 1,
+        });
     };
 
     return (
-        <span className="likeButton" onClick={handleClick}>
-            ♥ {buttonRightCount}
-        </span>
+        <div className="vote-area vote-area--right">
+            <span className="count"><span className="count-num">{buttonRightCount}</span>票</span>
+            <button className="btn btn--right" onClick={handleClick}>
+                <span className="btn-text-main">ディグニクス</span><br/>に投票する
+            </button>
+        </div>
     );
 };
 

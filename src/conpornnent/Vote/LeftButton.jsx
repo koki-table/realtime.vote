@@ -1,22 +1,35 @@
 import React from "react";
 import { useRecoilState } from "recoil"
 import { buttonLeftCountAtom } from "../../state/buttonLeftCount"
-
-// import { deleteDoc, doc, updateDoc, collection } from "firebase/firestore";
-// import { firebaseApp } from "../../firebase/firebase.config";
+import { currentUserAtom } from "../../state/currentUser"
+import { doc, updateDoc, collection } from "firebase/firestore";
+import { firebaseApp } from "../../firebase/firebase.config";
 
 const LeftButton = () => {
 
+    // database(firestoreの参照)
+    const firestoreData = collection(firebaseApp.firestore, 'users');
+
+    const [currentUser, setCurrentUser] = useRecoilState(currentUserAtom);
+
     // ButtonState
     const [buttonLeftCount, setButtonLeftCount] = useRecoilState(buttonLeftCountAtom);
-    const handleClick = () => {
+    const handleClick = async() => {
         setButtonLeftCount(buttonLeftCount + 1);
+
+         // firestoreのcountを更新
+        await updateDoc(doc(firestoreData, currentUser), {
+            leftCount: buttonLeftCount + 1,
+        });
     };
 
     return (
-        <span className="likeButton" onClick={handleClick}>
-            ♥ {buttonLeftCount}
-        </span>
+        <div className="vote-area vote-area--left">
+            <span className="count"><span className="count-num">{buttonLeftCount}</span>票</span>
+            <button className="btn btn--left" onClick={handleClick}>
+                <span className="btn-text-main">テナジー</span><br/>に投票する
+            </button>
+        </div>
     );
 };
 
