@@ -6,7 +6,7 @@ import { buttonRightCountAtom } from "../../state/buttonRightCount"
 import { buttonTotalCountAtom } from "../../state/buttonTotalCount"
 
 import { firebaseApp } from "../../firebase/firebase.config";
-import { doc, setDoc, collection, onSnapshot, updateDoc, query, where, getDoc, getDocs } from "firebase/firestore";
+import { collection, getDocs } from "firebase/firestore";
 
 const TotalCount = () => {
     // ButtonState
@@ -22,17 +22,10 @@ const TotalCount = () => {
             const querySnapshot = await getDocs(firestoreData);
             let sum = 0;
             querySnapshot.forEach((doc) => {
-                // doc.data() is never undefined for query doc snapshots
-                // console.log(doc.id, " => ", doc.data().leftCount + doc.data().rightCount);
-
                 let totalIdCount = doc.data().leftCount + doc.data().rightCount
-
                 sum += totalIdCount;
-
-                console.log(totalIdCount);
             });
             setButtonTotalCount(sum)
-
         };
         totalCount()
     },[buttonLeftCount,buttonRightCount]);

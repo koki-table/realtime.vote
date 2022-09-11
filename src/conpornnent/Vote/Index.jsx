@@ -1,6 +1,6 @@
 import React from "react";
-import LeftButton from './LeftButton'
-import RightButton from './RightButton'
+import LeftButton from './LeftCount'
+import RightButton from './RightCount'
 import TotalCount from './TotalCount'
 import RegisterName from './RegisterName'
 import BothCount from './BothCount'
@@ -9,14 +9,7 @@ import Ranking from './PersonalData'
 import AuthInit from '../../firebase/AuthInit'
 import FirestoreInit from '../../firebase/FirestoreInit'
 
-import { useRecoilState } from "recoil"
-import { currentUserAtom } from "../../state/currentUser"
-
-
 const Index = () => {
-
-    const [currentUser, setCurrentUser] = useRecoilState(currentUserAtom);
-
     return (
         <div className="container">
             <FirestoreInit/>

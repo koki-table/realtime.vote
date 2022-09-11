@@ -5,11 +5,10 @@ import { currentUserAtom } from "../../state/currentUser"
 import { doc, updateDoc, collection } from "firebase/firestore";
 import { firebaseApp } from "../../firebase/firebase.config";
 
-const LeftButton = () => {
+const LeftCount = () => {
 
     // database(firestoreの参照)
     const firestoreData = collection(firebaseApp.firestore, 'users');
-
     const [currentUser, setCurrentUser] = useRecoilState(currentUserAtom);
 
     // ButtonState
@@ -33,4 +32,4 @@ const LeftButton = () => {
     );
 };
 
-export default LeftButton;
+export default LeftCount;

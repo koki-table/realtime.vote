@@ -21,7 +21,7 @@ const FirestoreInit = () => {
 
     // firestoreのドキュメントに登録
     const firestoreInit = async () => {
-        await setDoc(doc(firestoreData, currentUser), {
+        await setDoc(doc(firestoreData, '0aSHzf7EWNYI5rkKF2S07hb02DM2'), {
             leftCount: buttonLeftCount,
             rightCount: buttonRightCount,
             name: name,
@@ -31,24 +31,28 @@ const FirestoreInit = () => {
 
     useEffect(() => {
         const initButtonState = async () => {
-            onSnapshot(doc(firestoreData, currentUser), (doc) => {
+            onSnapshot(doc(firestoreData, '0aSHzf7EWNYI5rkKF2S07hb02DM2'), (doc) => {
 
                 // firestoreに登録がない場合
                 if(typeof doc.data() === 'undefined') {
                     firestoreInit()
+
+                    console.log("firestoreなし");
                 // firestoreに登録がある場合
                 } else {
                     setButtonLeftCount(doc.data().leftCount)
                     setButtonRightCount(doc.data().rightCount)
                     setName(doc.data().name)
-                    console.log(buttonRightCount);
+                    console.log("firestoreあり");
                 }
             });
         };
         initButtonState();
 
+        console.log(currentUser);
+
         // currentUserが更新されたタイミングでuseeffectが実行
-    }, [currentUser])
+    }, [])
 
     useEffect(() => {
         firestoreInit()

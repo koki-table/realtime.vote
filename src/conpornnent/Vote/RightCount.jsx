@@ -5,7 +5,7 @@ import { currentUserAtom } from "../../state/currentUser"
 import { doc, updateDoc, collection } from "firebase/firestore";
 import { firebaseApp } from "../../firebase/firebase.config";
 
-const RightButton = () => {
+const RightCount = () => {
 
     // database(firestoreの参照)
     const firestoreData = collection(firebaseApp.firestore, 'users');
@@ -33,4 +33,4 @@ const RightButton = () => {
     );
 };
 
-export default RightButton;
+export default RightCount;

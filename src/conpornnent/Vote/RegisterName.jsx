@@ -39,13 +39,9 @@ const RegisterName = () => {
             return;
         }; 
 
-        console.log(detailName);
-
         setName(detailName)
 
         const nameRef = doc(firestoreData, currentUser);
-
-        console.log(`${detailName}`);
 
         await updateDoc(nameRef, {
             "name" : `${detailName}`
