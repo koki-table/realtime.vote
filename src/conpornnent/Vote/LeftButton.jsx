@@ -28,7 +28,7 @@ const LeftButton = () => {
             <button className="btn btn--left" onClick={handleClick}>
                 <span className="btn-text-main">テナジー</span><br/>に投票する
             </button>
-            <span className="count"><span className="count-num">{buttonLeftCount}</span>票</span>
+            <span className="count"><span className="count-num count-num--small">{buttonLeftCount}</span>票</span>
         </div>
     );
 };

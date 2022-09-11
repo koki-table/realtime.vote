@@ -34,14 +34,14 @@ const TotalCount = () => {
 
             console.log(totalIdCount);
         });
-
         setButtonTotalCount(sum)
+
     };
     totalCount()
 
     return (
-        <div className="total-count">
-            <p>総投票数<span className="count-num">{buttonTotalCount}</span>票</p>
+        <div className="total-count total-count--main">
+            <p>総投票数<span className="count-num count-num--large">{buttonTotalCount}</span>票</p>
         </div>
     );
 };

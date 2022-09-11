@@ -5,6 +5,7 @@ import TotalCount from './TotalCount'
 import RegisterName from './RegisterName'
 import BothCount from './BothCount'
 import Chart from './Chart'
+import Ranking from './PersonalData'
 import AuthInit from '../../firebase/AuthInit'
 import FirestoreInit from '../../firebase/FirestoreInit'
 
@@ -30,6 +31,7 @@ const Index = () => {
                 <LeftButton/>
                 <RightButton/>
             </div>
+            <Ranking/>
         </div>
     );
 };

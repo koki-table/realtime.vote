@@ -46,8 +46,7 @@ body {
   position: relative;
   max-width: 800px;
   margin: 0 auto;
-  background: #fff;
-  /* height: calc(100vh - 85px); */
+  background: #FFF5E1;
 }
 
 @media (min-width: 769px) {

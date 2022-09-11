@@ -6,12 +6,15 @@ import { firebaseApp } from "./firebase.config";
 import { doc, setDoc, collection, onSnapshot, updateDoc, query, where, getDoc, getDocs } from "firebase/firestore";
 import { buttonLeftCountAtom } from "../state/buttonLeftCount"
 import { buttonRightCountAtom } from "../state/buttonRightCount"
+import { nameAtom } from "../state/name"
 
 const FirestoreInit = () => {
 
     const [currentUser, setCurrentUser] = useRecoilState(currentUserAtom);
     const [buttonLeftCount, setButtonLeftCount] = useRecoilState(buttonLeftCountAtom);
     const [buttonRightCount, setButtonRightCount] = useRecoilState(buttonRightCountAtom);
+    const [name, setName] = useRecoilState(nameAtom);
+
 
     // database(firestoreの参照)
     const firestoreData = collection(firebaseApp.firestore, 'users');
@@ -21,7 +24,7 @@ const FirestoreInit = () => {
         await setDoc(doc(firestoreData, currentUser), {
             leftCount: buttonLeftCount,
             rightCount: buttonRightCount,
-            name: '名無しさん',
+            name: name,
             userId: `${currentUser}`,
         });
     };
@@ -37,6 +40,7 @@ const FirestoreInit = () => {
                 } else {
                     setButtonLeftCount(doc.data().leftCount)
                     setButtonRightCount(doc.data().rightCount)
+                    setName(doc.data().name)
                     console.log(buttonRightCount);
                 }
             });

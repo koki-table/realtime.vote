@@ -43,11 +43,11 @@ const BothCount = () => {
         <div className="total-count">
             <p className="total-count-detail">
                 <span className="text">テナジー合計</span><br/>
-                <span className="count-num">{leftCcountTotal}</span>票
+                <span className="count-num count-num--small">{leftCcountTotal}</span>票
             </p>
             <p className="total-count-detail">
                 <span className="text">ディグニクス合計</span><br/>
-                <span className="count-num">{rightCountTotal}</span>票
+                <span className="count-num count-num--small">{rightCountTotal}</span>票
             </p>
         </div>
     );

@@ -45,12 +45,12 @@ const Chart = () => {
             { 
                 label: "テナジー",
                 data: [buttonLeftCount],
-                backgroundColor: "rgba(244, 143, 177, 0.6)",
+                backgroundColor: "rgba(236, 87, 107, 0.8)",
             },
             { 
                 label: "ディグニクス", 
                 data: [buttonRightCount], 
-                backgroundColor: "rgba(169, 206, 236, 1)",
+                backgroundColor: "rgba(78, 197, 193, 0.8)",
             },
         ],
     }
